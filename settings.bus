@@ -1,0 +1,12 @@
+{
+  "entryList": [
+    {
+      "sources": [
+        "/Users/user/Documents/tests/backupper/source"
+      ],
+      "name": "first",
+      "destination": "/Users/user/Documents/tests/backupper/destination",
+      "copies": 2
+    }
+  ]
+}
