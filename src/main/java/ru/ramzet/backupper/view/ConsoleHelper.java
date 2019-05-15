@@ -1,4 +1,6 @@
-package ru.ramzet.backupper.model;
+package ru.ramzet.backupper.view;
+
+import ru.ramzet.backupper.model.Entry;
 
 import java.io.BufferedReader;
 import java.io.IOException;

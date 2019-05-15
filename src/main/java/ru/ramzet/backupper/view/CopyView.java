@@ -3,12 +3,13 @@ package ru.ramzet.backupper.view;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.ramzet.backupper.controller.CopyController;
-import ru.ramzet.backupper.model.ConsoleHelper;
 import ru.ramzet.backupper.model.CopySettings;
 import ru.ramzet.backupper.model.Entry;
 import ru.ramzet.backupper.model.Status;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,12 +52,28 @@ public class CopyView {
                 case 3:
                     makeSettings();
                     break;
+                case 4:
+                    viewCopies();
+                    break;
                 case 5:
                     exit = true;
                     break;
             }
         }
         System.exit(0);
+    }
+
+    private void viewCopies() {
+        CopySettings settings = CopySettings.getSettings();
+        settings.getEntryList().forEach(e -> {
+            System.out.println("====================================");
+            System.out.println(e.getName());
+            File destination = new File(e.getDestination());
+            for (String s : destination.list()) {
+                System.out.println(s);
+            }
+            System.out.println("====================================");
+        });
     }
 
     private void makeSettings() {
@@ -120,6 +137,11 @@ public class CopyView {
             ConsoleHelper.writeMessage("или нажмите Enter для завершения списка");
             String input = ConsoleHelper.input();
             if (input == null || input.isEmpty() || input.equalsIgnoreCase("")) break;
+            try {
+                input = new String(URLDecoder.decode(input, "UTF-8").getBytes("UTF-8"), "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                System.out.println("Ошибка декодирования имени файла");
+            }
             File file = new File(input);
             if (file.exists()) {
                 ConsoleHelper.writeMessage("Путь добавлен");
@@ -139,6 +161,11 @@ public class CopyView {
             String input = ConsoleHelper.input();
             if (input == null || input.isEmpty() || input.equalsIgnoreCase("")) {
                 break;
+            }
+            try {
+                input = new String(URLDecoder.decode(input, "UTF-8").getBytes("UTF-8"), "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                System.out.println("Ошибка декодирования имени файла");
             }
             File file = new File(input);
             if (file.exists()) {

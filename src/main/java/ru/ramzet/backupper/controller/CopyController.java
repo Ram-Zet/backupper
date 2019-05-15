@@ -2,7 +2,7 @@ package ru.ramzet.backupper.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
-import ru.ramzet.backupper.model.ConsoleHelper;
+import ru.ramzet.backupper.view.ConsoleHelper;
 import ru.ramzet.backupper.model.CopySettings;
 import ru.ramzet.backupper.model.Entry;
 import ru.ramzet.backupper.model.Status;
@@ -14,8 +14,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 import static ru.ramzet.backupper.constansts.Constants.*;
 

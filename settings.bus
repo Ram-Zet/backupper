@@ -2,11 +2,11 @@
   "entryList": [
     {
       "sources": [
-        "/Users/user/Documents/tests/backupper/source"
+        "d:\\книги"
       ],
       "name": "first",
-      "destination": "/Users/user/Documents/tests/backupper/destination",
-      "copies": 2
+      "destination": "d:\\снапшоты",
+      "copies": 3
     }
   ]
 }
